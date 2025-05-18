@@ -5,33 +5,41 @@
     <title>хихихи</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+    <link rel="stylesheet" href="{% static 'glag_to_kir/css/style.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Glagolitic&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Мы такие старославянские блин класс</h1>
-        
-        <form method="post">
-            {% csrf_token %}
-            
-            <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+              <header> 
+                  <h1><br><i>Мы такие старославянские блин квас</i></h1>
+              </header>
+         </div>
+    </div> 
+    
+    <div class="container">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
                 
-                <textarea id="text-input" name="text" class="form-control" rows="5" placeholder="ваш старослав...."></textarea>
-            </div>
-            <!-- Глаголик коава-->
-            
-            
+                <div class="form-group">
+                    
+                    <textarea id="text-input" name="text" class="form-control" rows="5" placeholder="ваш старослав...." style="font-size: 22px"></textarea>
+                </div>
             <button type="submit" class="btn-submit">Преобразовать</button>
-            
+        </form>
+        
             {% if result %}
             <div class="result-box">
                 <h3>Результат:</h3>
                 <div class="result-text">{{ result }}</div>
             </div>
             {% endif %}
-        </form>
+
+    </div>
+    <div class="col-md-6">
         <div class="keyboard-container">
             <div class="glagolitic-keyboard">
                 <div class="keyboard-row">
@@ -82,13 +90,64 @@
                     <button class="key" data-char="Ⱖ">Ⱖ</button>
                     <button class="key" data-char="Ⱗ">Ⱗ</button>
                 </div>
-        
-            <div class="keyboard-row">
-                <button type="button" class="key special space" data-char=" ">Пробел</button>
-                <button type="button" class="key special" data-action="backspace">⌫ Удалить</button>
             </div>
+        <div class="keyboard-container">
+            <div class="glagolitic-keyboard">
+                <div class="keyboard-row">
+                    <button class="key" data-char="а">a</button>
+                    <button class="key" data-char="б">б</button>
+                    <button class="key" data-char="в">в</button>
+                    <button class="key" data-char="г">г</button>
+                    <button class="key" data-char="д">д</button>
+                    <button class="key" data-char="є">є</button>
+                    <button class="key" data-char="ж">ж</button>
+                    <button class="key" data-char="ѕ">ѕ</button>
+                    <button class="key" data-char="з">з</button>
+                    <button class="key" data-char="и">и</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key" data-char="і">і</button>
+                    <button class="key" data-char="к"> к</button>
+                    <button class="key" data-char="л">л</button>
+                    <button class="key" data-char="м">м</button>
+                    <button class="key" data-char="н">н</button>
+                    <button class="key" data-char="о">о</button>
+                    <button class="key" data-char="п">п</button>
+                    <button class="key" data-char="р">р</button>
+                    <button class="key" data-char="с">с</button>
+                    <button class="key" data-char="т">т</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key" data-char="оу">оу</button>
+                    <button class="key" data-char="ф">ф</button>
+                    <button class="key" data-char="х">х</button>
+                    <button class="key" data-char="ѡ">ѡ</button>
+                    <button class="key" data-char="ц">ц</button>
+                    <button class="key" data-char="ч">ч</button>
+                    <button class="key" data-char="ш">ш</button>
+                    <button class="key" data-char="щ">щ</button>
+                    <button class="key" data-char="ъ">ъ</button>
+                    <button class="key" data-char="ы">ы</button>
+                </div>
+                <div class="keyboard-row">
+                    <button class="key" data-char="ь">ь</button>
+                    <button class="key" data-char="ѣ">ѣ</button>
+                    <button class="key" data-char="ю">ю</button>
+                    <button class="key" data-char="ꙗ">ꙗ</button>
+                    <button class="key" data-char="ѥ">ѥ</button>
+                    <button class="key" data-char="ѧ">ѧ</button>
+                    <button class="key" data-char="ѫ">ѫ</button>
+                    <button class="key" data-char="ѩ">ѩ</button>
+                    <button class="key" data-char="ѭ">ѭ</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key special space" data-char=" ">Пробел</button>
+                    <button type="button" class="key special" data-action="backspace">⌫ </button>
+                </div>
+            </div>
+
+
         </div>
-    </div>
     <script src="{% static 'glag_to_kir/js/keyboard.js' %}?v=1"></script>
 </body>
 </html>

@@ -1,47 +1,48 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Документ загружен');
+    
     const textarea = document.getElementById('text-input');
     if (!textarea) {
-        console.error('Не найдено поле ввода с id="text-input"');
-        return;
+      console.error('ОШИБКА: Элемент textarea#text-input не найден');
+      return;
     }
-
-    // Отключаем стандартное поведение для всех кнопок клавиатуры
-    document.querySelectorAll('.key').forEach(button => {
-        button.addEventListener('mousedown', function(e) {
-            e.preventDefault(); // Предотвращаем "залипание" фокуса
-        });
-    });
-
-    // Основной обработчик кликов
-    document.querySelector('.keyboard').addEventListener('click', function(e) {
-        const key = e.target.closest('.key');
-        if (!key) return;
-
+  
+    const keys = document.querySelectorAll('.key');
+    if (keys.length === 0) {
+      console.error('ОШИБКА: Кнопки клавиатуры не найдены');
+      return;
+    }
+  
+    console.log(`Найдено ${keys.length} клавиш`);
+  
+    keys.forEach(key => {
+      key.addEventListener('click', (e) => {
         e.preventDefault();
-        const char = key.getAttribute('data-char');
-        const action = key.getAttribute('data-action');
+        e.stopPropagation();
         
+        console.log('Нажата клавиша:', key.dataset.char || key.dataset.action);
+        
+        const char = key.dataset.char;
+        const action = key.dataset.action;
         const startPos = textarea.selectionStart;
         const endPos = textarea.selectionEnd;
         const text = textarea.value;
-        
+  
         if (action === 'backspace') {
-            if (startPos > 0) {
-                textarea.value = text.substring(0, startPos - 1) + text.substring(endPos);
-                textarea.selectionStart = textarea.selectionEnd = startPos - 1;
-            }
+          if (startPos > 0) {
+            textarea.value = text.substring(0, startPos-1) + text.substring(endPos);
+            textarea.selectionStart = textarea.selectionEnd = startPos-1;
+          }
         } else if (char) {
-            textarea.value = text.substring(0, startPos) + char + text.substring(endPos);
-            const newPos = startPos + char.length;
-            textarea.selectionStart = textarea.selectionEnd = newPos;
+          textarea.value = text.substring(0, startPos) + char + text.substring(endPos);
+          const newPos = startPos + char.length;
+          textarea.selectionStart = textarea.selectionEnd = newPos;
         }
-        
+  
         textarea.focus();
         
-        // пузырьки чтобы домик работал как инадо
-        const inputEvent = new Event('input', { bubbles: true });
-        textarea.dispatchEvent(inputEvent);
+        // Для отладки
+        console.log('Текущее значение:', textarea.value);
+      });
     });
-
-
-});
+  });

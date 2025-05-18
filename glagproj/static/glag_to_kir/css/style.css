@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1600px;
     margin: 0 auto;
     background: white;
     padding: 30px;
@@ -28,7 +28,7 @@ h1 {
     padding: 15px;
     border: 2px solid #ddd;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 35px;
     margin-bottom: 20px;
     resize: vertical;
     min-height: 150px;
@@ -46,6 +46,12 @@ h1 {
     padding: 5px;
     border-radius: 2px;
     margin-bottom: 10px;
+}
+
+.result-text {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow: auto;
 }
 
 .keyboard-row {
@@ -93,13 +99,14 @@ h1 {
 
 /* Кнопка отправки */
 .btn-submit {
-    background: #2ecc71;
+    background: #69f3a3;
     color: white;
     border: none;
     padding: 12px 25px;
     font-size: 16px;
     border-radius: 6px;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     width: 50%;
     transition: background 0.3s;
