@@ -1,37 +1,56 @@
 from django.shortcuts import render
 from .forms import TextForm
+from asgiref.sync import sync_to_async
+from django.http import HttpRequest
 
-def homee(request):
+# Асинхронная обертка для рендеринга
+@sync_to_async
+def render_template(request, template, context):
+    return render(request, template, context)
+
+async def homee(request: HttpRequest):
     result = None
-    form = TextForm(request.POST or None)
     
-    if request.method == 'POST' and form.is_valid():
+    if request.method == 'POST':
+        # Создаем копию POST данных для асинхронной обработки
+        post_data = request.POST.dict() if hasattr(request.POST, 'dict') else {}
+        form = TextForm(post_data)
         
-        text = form.cleaned_data['text']
-        result = text * 2
-        '''
-        IsCyrrilic = False
-        IsGlagolithic = False
-        cyr = ('абвгдежѕзΙиклмнопрстѹфххѠцчшщъыьѣѧѩѫѭ')
-        glag = ('ⰰ ⰱ ⰲ ⰳ ⰴ ⰵ ⰶ ⰷ ⰸ ⰺ ⰻ ⰽ ⰾ ⰿ ⱀ ⱁ ⱂ ⱃ ⱄ ⱅ ⱆ ⱇ ⱈ ⱒ ⱉ ⱌ ⱍ ⱎ ⱋ ⱏ ⱏⰺ ⱐ ⱑ ⱔ ⱗ ⱘ ⱙ')
-        glag = glag.split(' ')
-        if text[0] in cyr:
-            IsCyrrilic = True
-        else:
-            IsGlagolithic = True
-        for letter in text:
-            if letter in cyr:
-                IsCyrrilic = True
-            elif letter in glag:
-                IsGlagolithic = True
+        # Проверка валидности формы
+        is_valid = await sync_to_async(form.is_valid)()
         
-        if IsCyrrilic == IsGlagolithic:
-            result = 'ВЗБОЛТАТЬ, НО НЕ СМЕШИВАТЬ (Кириллицу и Глаголицу)'
-        else:
-            result = text * 2
-'''
+        if is_valid:
+            text = form.cleaned_data['text']
+            result = await process_text(text)
+    else:
+        form = TextForm()
     
-    return render(request, 'home.html', {
+    return await render_template(request, 'home.html', {
         'form': form,
         'result': result
     })
+
+async def process_text(text: str) -> str:
+    """Асинхронная обработка текста"""
+    if not text:
+        return None
+        
+    cyr = set('абвгдежѕзιиклмнопрстѹфхѡцчшщъыьѣѧѩѫѭ')
+    glag = set('ⰀⰁⰂⰃⰄⰅⰆⰇⰈⰊⰋⰍⰎⰏⰐⰑⰒⰓⰔⰕⰖⰗⰘⰙⰜⰝⰞⰟⰟⰊⰌⰍⰎⰏⰐⰑⰒⰓⰔⰕⰖⰗⰘⰙ')
+    has_cyr = False
+    has_glag = False
+    for char in text:
+        try:
+            if char.lower() in cyr:
+                has_cyr = True
+            if char in glag:
+                has_glag = True
+        except:
+            continue
+        if has_cyr and has_glag:
+            break
+    
+    if has_cyr and has_glag:
+        return 'ВЗБОЛТАТЬ, НО НЕ СМЕШИВАТЬ (Кириллицу и Глаголицу)'
+    else:
+        return "все норм\n" + text 
