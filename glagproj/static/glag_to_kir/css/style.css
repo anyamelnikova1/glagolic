@@ -1,0 +1,142 @@
+/* Основные стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Поле ввода */
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    resize: vertical;
+    min-height: 150px;
+    transition: border 0.3s;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Клавиатура */
+.keyboard-container {
+    background: #ecf0f1;
+    padding: 5px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    gap: 8px;
+}
+
+.key {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 2px;
+    background: white;
+    font-family: 'Noto Sans Glagolitic', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.key:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.key:active {
+    transform: translateY(0);
+}
+
+.key.special {
+    background: #bdc3c7;
+    font-size: 20px;
+}
+
+.key.space {
+    width: 300px;
+}
+
+/* Кнопка отправки */
+.btn-submit {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background: #27ae60;
+}
+
+/* Результат */
+.result-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.result-text {
+    font-family: 'Noto Sans Glagolitic', sans-serif;
+    font-size: 20px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .key {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .key.space {
+        width: 200px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}

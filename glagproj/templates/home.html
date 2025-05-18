@@ -1,42 +1,94 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Мы такие старославянские блин класс</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .container {
-            max-width: 800px;
-            margin-top: 50px;
-        }
-        .result-box {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-        }
-    </style>
+    <title>хихихи</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'glag_to_kir/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Glagolitic&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1 class="mb-4">Мы такие старославянские блин класс</h1>
+        <h1>Мы такие старославянские блин класс</h1>
         
         <form method="post">
             {% csrf_token %}
             
-            <div class="mb-3">
-                {{ form.text.label_tag }}
-                {{ form.text }}
+            <div class="form-group">
+                <label for="text-input">Ваш старослав....</label>
+                <textarea id="text-input" name="text" class="form-control" rows="5" placeholder="Начните печатать или используйте клавиатуру ниже"></textarea>
             </div>
             
-            <button type="submit" class="btn btn-primary">Преобразовать</button>
+            <!-- Глаголическая клавиатура -->
+            <div class="keyboard-container">
+                <div class="glagolitic-keyboard">
+                    <div class="keyboard-row">
+                        <button class="key" data-char="Ⰰ">Ⰰ</button>
+                        <button class="key" data-char="Ⰱ">Ⰱ</button>
+                        <button class="key" data-char="Ⰲ">Ⰲ</button>
+                        <button class="key" data-char="Ⰳ">Ⰳ</button>
+                        <button class="key" data-char="Ⰴ">Ⰴ</button>
+                        <button class="key" data-char="Ⰵ">Ⰵ</button>
+                        <button class="key" data-char="Ⰶ">Ⰶ</button>
+                        <button class="key" data-char="Ⰷ">Ⰷ</button>
+                        <button class="key" data-char="Ⰸ">Ⰸ</button>
+                        <button class="key" data-char="Ⰹ">Ⰹ</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key" data-char="Ⰺ">Ⰺ</button>
+                        <button class="key" data-char="Ⰻ">Ⰻ</button>
+                        <button class="key" data-char="Ⰼ">Ⰼ</button>
+                        <button class="key" data-char="Ⰽ">Ⰽ</button>
+                        <button class="key" data-char="Ⰾ">Ⰾ</button>
+                        <button class="key" data-char="Ⰿ">Ⰿ</button>
+                        <button class="key" data-char="Ⱀ">Ⱀ</button>
+                        <button class="key" data-char="Ⱁ">Ⱁ</button>
+                        <button class="key" data-char="Ⱂ">Ⱂ</button>
+                        <button class="key" data-char="Ⱃ">Ⱃ</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key" data-char="Ⱄ">Ⱄ</button>
+                        <button class="key" data-char="Ⱅ">Ⱅ</button>
+                        <button class="key" data-char="Ⱆ">Ⱆ</button>
+                        <button class="key" data-char="Ⱇ">Ⱇ</button>
+                        <button class="key" data-char="Ⱈ">Ⱈ</button>
+                        <button class="key" data-char="Ⱉ">Ⱉ</button>
+                        <button class="key" data-char="Ⱊ">Ⱊ</button>
+                        <button class="key" data-char="Ⱋ">Ⱋ</button>
+                        <button class="key" data-char="Ⱌ">Ⱌ</button>
+                        <button class="key" data-char="Ⱍ">Ⱍ</button>
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key" data-char="Ⱎ">Ⱎ</button>
+                        <button class="key" data-char="Ⱏ">Ⱏ</button>
+                        <button class="key" data-char="Ⱐ">Ⱐ</button>
+                        <button class="key" data-char="Ⱑ">Ⱑ</button>
+                        <button class="key" data-char="Ⱒ">Ⱒ</button>
+                        <button class="key" data-char="Ⱓ">Ⱓ</button>
+                        <button class="key" data-char="Ⱔ">Ⱔ</button>
+                        <button class="key" data-char="Ⱕ">Ⱕ</button>
+                        <button class="key" data-char="Ⱖ">Ⱖ</button>
+                        <button class="key" data-char="Ⱗ">Ⱗ</button>
+                    </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key special space" data-char=" ">Пробел</button>
+                    <button type="button" class="key special" data-action="backspace">⌫ Удалить</button>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-submit">Преобразовать</button>
+            
+            {% if result %}
+            <div class="result-box">
+                <h3>Результат:</h3>
+                <div class="result-text">{{ result }}</div>
+            </div>
+            {% endif %}
         </form>
-        
-        {% if result %}
-        <div class="result-box">
-            <h4>Результат:</h4>
-            <p>{{ result }}</p>
-        </div>
-        {% endif %}
     </div>
+
+    <script src="{% static 'glag_to_kir/js/keyboard.js' %}"></script>
 </body>
 </html>
+
