@@ -35,8 +35,8 @@ async def process_text(text: str) -> str:
     if not text:
         return None
         
-    cyr = set('абвгдежѕзιиклмнопрстѹфхѡцчшщъыьѣѧѩѫѭ')
-    glag = set('ⰀⰁⰂⰃⰄⰅⰆⰇⰈⰊⰋⰍⰎⰏⰐⰑⰒⰓⰔⰕⰖⰗⰘⰙⰜⰝⰞⰟⰟⰊⰌⰍⰎⰏⰐⰑⰒⰓⰔⰕⰖⰗⰘⰙ')
+    cyr = set('абвгдежѕзΙиклмнопрстѹфхѠцчшщъыьѣюѧѩѫѭꙗ')
+    glag = set('ⰰⰱⰲⰳⰴⰵⰶⰷⰸⰺⰻⰽⰾⰿⱀⱁⱂⱃⱄⱅⱆⱇⱈⱉⱌⱍⱎⱋⱏⱏⰺⱐⱑⱓⱔⱗⱘⱙ')
     has_cyr = False
     has_glag = False
     for char in text:
