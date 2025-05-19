@@ -5,32 +5,33 @@
     <title>хихихи</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'glag_to_kir/css/style.css' %}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{% static 'glag_to_kir/css/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Glagolitic&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ponomar&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-              <header> 
-                  <h1><br><i>Мы такие старославянские блин квас</i></h1>
-              </header>
-         </div>
-    </div> 
-    
+    <header style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+        <h1>Глаголица? Кириллица? Мы могём всё!</h1>
+    </header>
+
     <div class="container">
         <div class="col-md-6">
             <form method="post">
                 {% csrf_token %}
-                
+
                 <div class="form-group">
-                    
-                    <textarea id="text-input" name="text" class="form-control" rows="5" placeholder="ваш старослав...." style="font-size: 22px"></textarea>
+
+                    <textarea id="text-input" name="text" class="form-control" rows='11' placeholder="Введите текст..."></textarea>
                 </div>
             <button type="submit" class="btn-submit">Преобразовать</button>
         </form>
-        
+
             {% if result %}
             <div class="result-box">
                 <h3>Результат:</h3>
