@@ -1,38 +1,61 @@
 /* Основные стили */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #696969;
     margin: 0;
     padding: 20px;
     color: #333;
+    background-image: url('../../images/фон2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+/* Самый первый заголовок */
+.ponomar-regular {
+  font-family: "Ponomar", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-<uniquifier> {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
 }
 
 .container {
-    max-width: 1600px;
+    max-width: 1200px;
     margin: 0 auto;
-    background: white;
+    background: #8B6D5C;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
 h1 {
-    color: #2c3e50;
+    font-family: 'Ponomar', sans-serif;
+    color: #FFE4C4;
     text-align: center;
     margin-bottom: 30px;
+    font-size: 50px;
 }
 
 /* Поле ввода */
 .form-control {
     width: 100%;
+    height: 200px;
     padding: 15px;
     border: 2px solid #ddd;
     border-radius: 8px;
-    font-size: 35px;
+    font-size: 25px;
     margin-bottom: 20px;
     resize: vertical;
-    min-height: 150px;
+    overflow-y: auto;
     transition: border 0.3s;
+    background-color: #ecf0f1;
+    font-family: "Montserrat", sans-serif;
 }
 
 .form-control:focus {
@@ -62,10 +85,10 @@ h1 {
 }
 
 .key {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border: none;
-    border-radius: 1px;
+    border-radius: 4px;
     background: white;
     font-family: 'Noto Sans Glagolitic', sans-serif;
     font-size: 17px;
@@ -99,11 +122,11 @@ h1 {
 
 /* Кнопка отправки */
 .btn-submit {
-    background: #69f3a3;
-    color: white;
+    background: #FFE4C4;
+    font-family: "Montserrat", sans-serif;
     border: none;
     padding: 12px 25px;
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 6px;
     align-items: center;
     justify-content: center;
@@ -113,20 +136,22 @@ h1 {
 }
 
 .btn-submit:hover {
-    background: #ff728a;
+    background: #BDECB6;
 }
 
 /* Результат */
 .result-box {
     margin-top: 30px;
     padding: 20px;
-    background: #f8f9fa;
+    background: #ecf0f1;
     border-radius: 8px;
     border: 1px solid #ddd;
+    font-family: "Montserrat", sans-serif;
+
 }
 
 .result-text {
-    font-family: 'Noto Sans Glagolitic', sans-serif;
+    font-family: "Montserrat", sans-serif;;
     font-size: 20px;
     white-space: pre-wrap;
     line-height: 1.6;
