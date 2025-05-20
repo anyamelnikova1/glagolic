@@ -16,8 +16,12 @@ glag_to_kir - папка, в которой содержатся все файл
 В папке templates хранится html - файл страницы.
 в папке static - файлы, содержащие настройки стилей элементов страницы и код, реализующий клавиатуру. 
 
+КАК ЗАПУСТИТЬ ТРАНСЛИТЕРАТОР ЛОКАЛЬНО:
+1. убедиться, что у вас стоит django, если нет, зайти в терминал и написать pip3 install django.
+2. зайти в терминал, сделать cd в желаемую директорию (там будет лежать наш проект)
+3. git clone https://github.com/anyamelnikova1/glagolic.git
+4. перейти в glagolic/glagproj (cd glagolic/glagproj)
+5. написать ./manage.py runserver или python manage.py runserver (если один вариант не сработает, пробовать другой)
 
 ССЫЛКИ НА ВНЕШНИЕ ИСТОЧНИКИ КОДА: 
-функция transliterate написана на основе функции transliterate, взятой из следующего файла: https://github.com/pykili/intro2python_2024/blob/main/seminars/sem14-15_oop/sem15_oop_katia.ipynb
-
-
+функция transliterate (строки 19-57 в файле views.py) частично написана на основе функции transliterate, взятой из следующего файла: https://github.com/pykili/intro2python_2024/blob/main/seminars/sem14-15_oop/sem15_oop_katia.ipynb 
