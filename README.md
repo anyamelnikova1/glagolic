@@ -24,4 +24,5 @@ glag_to_kir - папка, в которой содержатся все файл
 5. написать ./manage.py runserver или python manage.py runserver (если один вариант не сработает, пробовать другой)
 
 ССЫЛКИ НА ВНЕШНИЕ ИСТОЧНИКИ КОДА: 
-функция transliterate (строки 19-57 в файле views.py) частично написана на основе функции transliterate, взятой из следующего файла: https://github.com/pykili/intro2python_2024/blob/main/seminars/sem14-15_oop/sem15_oop_katia.ipynb 
+1. функция transliterate (строки 19-57 в файле views.py) частично написана на основе функции transliterate, взятой из следующего файла: https://github.com/pykili/intro2python_2024/blob/main/seminars/sem14-15_oop/sem15_oop_katia.ipynb 
+2. код страницы написан с опорой на документацию Django: https://docs.djangoproject.com/en/5.2/ 
