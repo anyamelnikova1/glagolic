@@ -5,7 +5,7 @@ from django.http import HttpRequest
 from typing import Literal
 import re
 
-# Асинхронная обертка для рендеринга
+# Асинк как тема попросил
 @sync_to_async
 def render_template(request, template, context):
     return render(request, template, context)
@@ -60,13 +60,10 @@ async def homee(request: HttpRequest):
     result = None
     
     if request.method == 'POST':
-        # Создаем копию POST данных для асинхронной обработки
+        # асинк и запросы
         post_data = request.POST.dict() if hasattr(request.POST, 'dict') else {}
         form = TextForm(post_data)
-        
-        # Проверка валидности формы
         is_valid = await sync_to_async(form.is_valid)()
-        
         if is_valid:
             text = form.cleaned_data['text']
             result = await process_text(text)
